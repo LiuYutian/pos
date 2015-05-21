@@ -3,6 +3,7 @@ function printInventory(inputs) {
 
     for(var i=0; i<inputs.length; i++) {
         var exist = false;
+        var a = arrayObject.length
         for(var j=0; j<arrayObject.length; j++) {
             if(inputs[i].barcode == arrayObject[j].barcode) {
                 arrayObject[j].count += 1;

@@ -9,8 +9,8 @@ function printInventory(inputs){
     }
 
     for(var i=0; i<inputs.length; i++) {
-        var inputsBarcode = inputs[i].length > (CHAR_LENGTH + 1) ? inputs[i].substring(0, CHAR_LENGTH) : inputs[i];
-        var inputsNumber = inputs[i].length > (CHAR_LENGTH + 1) ? parseInt(inputs[i].substring((CHAR_LENGTH + 1))) : 1;
+        var inputsBarcode = inputs[i].indexOf("-") > (CHAR_LENGTH + 1) ? inputs[i].substring(0, CHAR_LENGTH) : inputs[i];
+        var inputsNumber = inputs[i].indexOf("-") > (CHAR_LENGTH + 1) ? parseInt(inputs[i].substring((CHAR_LENGTH + 1))) : 1;
 
         for(var j=0; j<arrayObject.length; j++) {
             if(inputsBarcode == arrayObject[j].barcode){
