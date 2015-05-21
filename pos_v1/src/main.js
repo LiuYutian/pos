@@ -9,7 +9,7 @@ function printInventory(inputs){
 
     for(var i=0; i<inputs.length; i++) {
         var inputsBarcode = inputs[i].indexOf("-") != -1 ? inputs[i].split("-")[0] : inputs[i];
-        var inputsNumber = inputs[i].indexOf("-") != -1 ? parseInt((inputs[i].split("-"))[1]) : 1;
+        var inputsNumber = inputs[i].indexOf("-") != -1 ? parseInt((inputs[i].split("-"))[1]) : 1; 
 
         for(var j=0; j<arrayObject.length; j++) {
             if(inputsBarcode == arrayObject[j].barcode){
