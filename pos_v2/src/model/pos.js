@@ -50,24 +50,37 @@ Pos.prototype.print = function() {
     result += "***<没钱赚商店>购物清单***\n";
     result += "打印时间："+DateFormat.getDate()+"\n";
     result += "----------------------\n";
-
-    for(var i = 0; i < this.promotionItemCountArray.length; i++) {
-        result += "名称："+this.promotionItemCountArray[i].item.name+"，数量："+this.promotionItemCountArray[i].count +
-        this.promotionItemCountArray[i].item.unit+"，单价："+this.promotionItemCountArray[i].item.price.toFixed(2)+"(元)，小计："+this.promotionItemCountArray[i].subtotal.toFixed(2)+"(元)\n";
-    }
-
+    result += printItem(this.promotionItemCountArray);
     result += "----------------------\n";
     result += "挥泪赠送商品：\n";
-
-    for(var i = 0; i < this.promotionItemCountArray.length; i++){
-        if(this.promotionItemCountArray[i].promotionCount > 0)
-        result += "名称："+this.promotionItemCountArray[i].item.name+"，数量："+this.promotionItemCountArray[i].promotionCount +
-        this.promotionItemCountArray[i].item.unit+"\n";
-    }
-
+    result += printPromotion(this.promotionItemCountArray);
     result += "----------------------\n";
     result += "总计：" + this.sum.toFixed(2)+"(元)\n";
     result += "节省：" + this.save.toFixed(2)+"(元)\n";
     result += "**********************";
+    
     console.log(result);
+}
+
+var printItem = function(promotionItemCountArray){
+    var result = "";
+
+    for(var i = 0; i < promotionItemCountArray.length; i++) {
+        result += "名称："+promotionItemCountArray[i].item.name+"，数量："+promotionItemCountArray[i].count +
+        promotionItemCountArray[i].item.unit+"，单价："+promotionItemCountArray[i].item.price.toFixed(2)+"(元)，小计："+promotionItemCountArray[i].subtotal.toFixed(2)+"(元)\n";
+    }
+
+    return result;
+}
+
+var printPromotion = function(promotionItemCountArray){
+    var result = "";
+
+    for(var i = 0; i < promotionItemCountArray.length; i++){
+        if(promotionItemCountArray[i].promotionCount > 0)
+        result += "名称："+promotionItemCountArray[i].item.name+"，数量："+promotionItemCountArray[i].promotionCount +
+        promotionItemCountArray[i].item.unit+"\n";
+    }
+
+    return result;
 }
