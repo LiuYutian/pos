@@ -8,6 +8,7 @@ CartItem.prototype.createItemCountArray = function(tags) {
     for(var i = 0; i < tags.length; i++) {
         var tagBacordCount = this.tag.getItemCount(tags[i]);
         var esist = false;
+
         for(var j = 0; j < itemCountArray.length; j++){
             if(itemCountArray[j].item.barcode === tagBacordCount.item.barcode) {
                 esist = true;
@@ -15,7 +16,7 @@ CartItem.prototype.createItemCountArray = function(tags) {
             }
         }
         if(!esist){
-            itemCountArray.push({'item':tagBacordCount.item,'count':tagBacordCount.count});
+            itemCountArray.push({'item' : tagBacordCount.item, 'count' : tagBacordCount.count});
         }
     }
 

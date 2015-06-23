@@ -5,8 +5,8 @@ function Tag() {
 }
 
 Tag.prototype.getItemCount = function(tag) {
-    this.barcode = tag.indexOf("-") != -1 ? tag.split("-")[0] : tag;
-    this.count = tag.indexOf("-") != -1 ? parseInt((tag.split("-"))[1]) : 1;
+    this.barcode = tag.indexOf("-") !== -1 ? tag.split("-")[0] : tag;
+    this.count = tag.indexOf("-") !== -1 ? parseFloat((tag.split("-"))[1]) : 1;
 
     for(var i = 0; i < this.loadAllItem.length; i++) {
         if(this.loadAllItem[i].barcode === this.barcode) {
