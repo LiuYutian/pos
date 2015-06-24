@@ -1,5 +1,11 @@
 function printInventory(tags) {
-    var pos = new Pos();
-    pos.scan(tags);
-    pos.print();
+    var cart = new Cart();
+
+    tags.forEach(function(n){
+        cart.add(Pos.scan(n));
+    });
+
+    // console.log(cart.cartItems);
+
+    Pos.print(cart);
 }

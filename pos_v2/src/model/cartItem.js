@@ -22,13 +22,15 @@ CartItem.prototype.getPromotion = function(){
                 return parseInt(this.count / 3);
             }
         }
+        
+        return 0;
     }
 }
 
 CartItem.prototype.getSubtotal = function(){
-    return (this.count - (this.getPromotion() || 0)) * this.getItem().price;
+    return (this.count - this.getPromotion()) * this.getItem().price;
 }
 
 CartItem.prototype.getItemSave = function(){
-    return (this.getPromotion() || 0) * this.getItem().price;
+    return this.getPromotion() * this.getItem().price;
 }
