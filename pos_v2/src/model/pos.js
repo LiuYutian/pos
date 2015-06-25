@@ -19,8 +19,7 @@ var Pos = (function(){
         result += "挥泪赠送商品：\n";
         result += printPromotion(cart);
         result += "----------------------\n";
-        result += "总计：" + cart.getSum().toFixed(2) + "(元)\
-        n";
+        result += "总计：" + cart.getSum().toFixed(2) + "(元)\n";
         result += "节省：" + cart.getSave().toFixed(2) + "(元)\n";
         result += "**********************";
 
@@ -30,11 +29,17 @@ var Pos = (function(){
     var printItem = function(cart) {
         var result = "";
 
-        for (var i = 0; i < cart.cartItems.length; i++) {
-            result += "名称：" + cart.cartItems[i].getItem().name + "，数量：" + cart.cartItems[i].count +
-            cart.cartItems[i].getItem().unit + "，单价：" + cart.cartItems[i].getItem().price.toFixed(2) + "(元)，小计：" +
-            cart.cartItems[i].getSubtotal().toFixed(2) + "(元)\n";
-        }
+        cart.cartItems.forEach(function(cartItem){
+            result += "名称：" + cartItem.getItem().name + "，数量：" + cartItem.count +
+            cartItem.getItem().unit + "，单价：" + cartItem.getItem().price.toFixed(2) + "(元)，小计：" +
+            cartItem.getSubtotal().toFixed(2) + "(元)\n";
+        });
+
+        // for (var i = 0; i < cart.cartItems.length; i++) {
+        //     result += "名称：" + cart.cartItems[i].getItem().name + "，数量：" + cart.cartItems[i].count +
+        //     cart.cartItems[i].getItem().unit + "，单价：" + cart.cartItems[i].getItem().price.toFixed(2) + "(元)，小计：" +
+        //     cart.cartItems[i].getSubtotal().toFixed(2) + "(元)\n";
+        // }
 
         return result;
     }
@@ -42,11 +47,17 @@ var Pos = (function(){
     var printPromotion = function(cart) {
         var result = "";
 
-        for (var i = 0; i < cart.cartItems.length; i++) {
-            if (cart.cartItems[i].getPromotion() !== 0)
-                result += "名称：" + cart.cartItems[i].getItem().name + "，数量：" + cart.cartItems[i].getPromotion() +
-                cart.cartItems[i].getItem().unit + "\n";
-        }
+        cart.cartItems.forEach(function(cartItem){
+            if (cartItem.getPromotion() !== 0)
+                result += "名称：" + cartItem.getItem().name + "，数量：" + cartItem.getPromotion() +
+                cartItem.getItem().unit + "\n";
+        });
+
+        // for (var i = 0; i < cart.cartItems.length; i++) {
+        //     if (cart.cartItems[i].getPromotion() !== 0)
+        //         result += "名称：" + cart.cartItems[i].getItem().name + "，数量：" + cart.cartItems[i].getPromotion() +
+        //         cart.cartItems[i].getItem().unit + "\n";
+        // }
 
         return result;
     }

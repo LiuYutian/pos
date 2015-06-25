@@ -5,7 +5,5 @@ function printInventory(tags) {
         cart.add(Pos.scan(n));
     });
 
-    // console.log(cart.cartItems);
-
-    Pos.print(cart);
+     Pos.print(cart);
 }
